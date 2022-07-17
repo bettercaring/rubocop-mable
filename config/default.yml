@@ -1,0 +1,4 @@
+Mable/HardcodedDatabaseFactoryBotId:
+  Enabled: true
+  Description: 'Avoid hardcoding factory bot database IDs, instead, dynamically test for the ID'
+  VersionAdded: '0.1.1'
