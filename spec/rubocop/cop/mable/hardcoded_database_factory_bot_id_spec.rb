@@ -37,26 +37,14 @@ RSpec.describe RuboCop::Cop::Mable::HardcodedDatabaseFactoryBotId, :config do
       it_behaves_like 'code that registers an offense'
     end
 
-    describe '#build' do
-      let(:code) { 'build(:user, first_name: "Mable", id: 10000)' }
-
-      it_behaves_like 'code that registers an offense'
-    end
-
     describe 'FactoryBot.create' do
       let(:code) { 'FactoryBot.create(:user, id: 10000, first_name: "Mable")' }
 
       it_behaves_like 'code that registers an offense'
     end
 
-    describe 'FactoryBot.build' do
-      let(:code) { 'FactoryBot.build(:user, first_name: "Mable", id: 10000, last_name: "Dorothy")' }
-
-      it_behaves_like 'code that registers an offense'
-    end
-
     context 'when including traits' do
-      let(:code) { 'FactoryBot.build(:user, :admin, first_name: "Mable", id: 10000, last_name: "Dorothy")' }
+      let(:code) { 'FactoryBot.create(:user, :admin, first_name: "Mable", id: 10000, last_name: "Dorothy")' }
 
       it_behaves_like 'code that registers an offense'
     end

@@ -5,8 +5,8 @@ require_relative 'lib/rubocop/mable/version'
 Gem::Specification.new do |spec|
   spec.name = 'rubocop-mable'
   spec.version = RuboCop::Mable::VERSION
-  spec.authors = ['Mable']
-  spec.email = ['matthew.gardner@mable.com.au']
+  spec.authors = ['Mable Engineers']
+  spec.email = ['engineering@mable.com.au']
 
   spec.summary = "Mable's custom rubocop cops"
   spec.description = "Mable's custom rubocop cops"
