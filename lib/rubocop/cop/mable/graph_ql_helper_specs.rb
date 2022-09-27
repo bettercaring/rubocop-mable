@@ -28,7 +28,7 @@ module RuboCop
           return unless post_graphql?(node)
 
           add_offense(node) do |corrector|
-            corrector.replace(node.location.expression, 'post grapql_path')
+            corrector.replace(node.child_nodes[0], 'graphql_path')
           end
         end
       end
