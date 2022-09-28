@@ -5,6 +5,11 @@ Mable's custom Rubocop cops
 ## Cops
 
 ```
+Mable/GraphQLHelperSpecs:
+  Description: 'Avoid hardcoding GraphQl path use helper instead.'
+  Enabled: true
+  VersionAdded: '0.1.2'
+
 Mable/HardcodedDatabaseFactoryBotId:
   Enabled: true
   Description: 'Avoid hardcoding factory bot database IDs, instead, dynamically test for the ID'
