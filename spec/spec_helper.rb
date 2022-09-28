@@ -3,6 +3,7 @@
 require 'rubocop-mable'
 require 'rubocop/rspec/support'
 require 'pry'
+Dir.glob(File.dirname(__dir__) + "/spec/support/**/*.rb").each { |file| require file }
 
 RSpec.configure do |config|
   config.include RuboCop::RSpec::ExpectOffense

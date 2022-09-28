@@ -5,27 +5,6 @@ require 'spec_helper'
 RSpec.describe RuboCop::Cop::Mable::HardcodedDatabaseFactoryBotId, :config do
   let(:config) { RuboCop::Config.new }
 
-  shared_examples 'code that registers an offense' do
-    it 'registers an offense' do
-      expect_offense(
-        <<~RUBY
-          #{code}
-          #{'^' * code.length} #{offense_msg}
-        RUBY
-      )
-    end
-  end
-
-  shared_examples 'code that does not register an offense' do
-    it 'does not register an offense' do
-      expect_no_offenses(
-        <<~RUBY
-          #{code}
-        RUBY
-      )
-    end
-  end
-
   context 'when registering an offense' do
     let(:offense_msg) do
       'Avoid hardcoding Factory Bot database IDs, instead, let the factory set the ID and test the result'
