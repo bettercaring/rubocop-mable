@@ -1,3 +1,6 @@
+## [0.1.1.3] - 2022-10-17
+- Added missing gemfile.lock
+
 ## [0.1.1.2] - 2022-10-17
 - Updated Changelog
 
