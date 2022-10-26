@@ -9,6 +9,6 @@ Mable/HardcodedDatabaseFactoryBotId:
   VersionAdded: '0.1.1'
 
 Mable/NoSafetyAssured:
-  Description: 'TODO: Write a description of the cop.'
-  Enabled: pending
-  VersionAdded: '<<next>>'
+  Description: 'An extra check to ensure that the safety_assured is required'
+  Enabled: true
+  VersionAdded: '0.1.3'
