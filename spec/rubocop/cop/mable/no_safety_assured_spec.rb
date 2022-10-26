@@ -5,7 +5,7 @@ RSpec.describe RuboCop::Cop::Mable::NoSafetyAssured, :config do
 
   context 'when registering an offense' do
     let(:offense_msg) do
-      'Are you sure safety_assured is required, is there a better way?'
+      'Are you sure safety_assured is required, is there a better way? https://github.com/ankane/strong_migrations'
     end
 
     describe 'safety_assured' do

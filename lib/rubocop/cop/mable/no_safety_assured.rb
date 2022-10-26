@@ -4,6 +4,7 @@ module RuboCop
   module Cop
     module Mable
       # An extra check to ensure that the safety_assured is required
+      # https://github.com/ankane/strong_migrations
 
       # @safety
       #   Can't be autocorrected because it's a manual check
@@ -18,7 +19,7 @@ module RuboCop
       #   remove_column :model_name....
 
       class NoSafetyAssured < Base
-        MSG = 'Are you sure safety_assured is required, is there a better way?'
+        MSG = 'Are you sure safety_assured is required, is there a better way? https://github.com/ankane/strong_migrations'
 
         RESTRICT_ON_SEND = %i[safety_assured].freeze
 
