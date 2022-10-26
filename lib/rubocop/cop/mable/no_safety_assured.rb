@@ -9,9 +9,7 @@ module RuboCop
       # @safety
       #   Can't be autocorrected because it's a manual check
       #
-      # @example EnforcedStyle: bar (default)
-      #   # Description of the `bar` style.
-      #
+      # @example
       #   # bad
       #   safety_assured { remove_column :model_name....
 
