@@ -5,6 +5,11 @@ Mable's custom Rubocop cops
 ## Cops
 
 ```
+Mable/NoSafetyAssured:
+  Description: 'An extra check to ensure that the safety_assured is required'
+  Enabled: true
+  VersionAdded: '0.1.3'
+
 Mable/GraphQLHelperSpecs:
   Description: 'Avoid hardcoding GraphQl path use helper instead.'
   Enabled: true
