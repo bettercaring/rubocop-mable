@@ -2,6 +2,8 @@
 
 RSpec.describe RuboCop::Cop::Mable::NoSafetyAssured, :config do
   let(:config) { RuboCop::Config.new }
+  let(:spacer_start) { 0 }
+  let(:spacer_end) { 0 }
 
   context 'when registering an offense' do
     let(:offense_msg) do
