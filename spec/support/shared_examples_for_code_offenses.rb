@@ -5,7 +5,7 @@ RSpec.shared_examples 'code that registers an offense' do
     expect_offense(
       <<~RUBY
         #{code}
-        #{' ' * spacer_start}#{'^' * (code.length - spacer_start - spacer_end)} #{offense_msg}
+        #{' ' * spacer_start}#{'^' * (code.length - spacer_start - spacer_end)} #{cop.name}: #{offense_msg}
       RUBY
     )
   end

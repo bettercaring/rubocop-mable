@@ -20,24 +20,20 @@ module RuboCop
       class NoPostInGraphQL < Base
         extend AutoCorrector
 
-        MSG = 'Use `make_graphql_request` directly instead of `post` for GraphQL requests, incorporating user context.'
+        MSG = "Use 'ReplacePostWith' default: `make_graphql_request` directly instead of `post` for GraphQL requests, incorporating user context."
 
         RESTRICT_ON_SEND = %i[post].freeze
 
         def_node_matcher :post_graphql?, <<~PATTERN
           (send nil? :post
-            (str _)
+            ({str | send nil?} $_)        # Optional first argument (string path)
             (hash
               (pair
                 (sym :params)
                 (hash
                   (pair (sym :query) _)
-                  (pair (sym :variables) _)
+                  (pair (sym :variables) _)? # Optional :variables pair
                 )
-              )
-              (pair
-                (sym :as)
-                (sym :json)
               )
             )
           )
@@ -48,6 +44,19 @@ module RuboCop
         PATTERN
 
         def on_send(node)
+          post_graphql?(node) do |path|
+            handle_post_graphql(node) if graphql_path_allowed?(path)
+          end
+        end
+
+        private
+
+        def graphql_path_allowed?(path)
+          allowed_paths = cop_config['AllowedGraphQLPaths'] || []
+          allowed_paths.include?(path.to_s)
+        end
+
+        def handle_post_graphql(node)
           return unless within_rspec_block?(node)
 
           # Check if the method is `post` and it includes `params:`
@@ -68,7 +77,7 @@ module RuboCop
           query = query_pair&.value&.source
           variables = variables_pair&.value&.source
 
-          replacement = cop_config['ReplacePostWith'] || 'make_graphql_request'
+          replacement = cop_config['ReplacePostWith']
           execute_call = "#{replacement}(query: #{query}"
           execute_call += ', user: user'
           execute_call += ", variables: #{variables}" if variables
@@ -79,16 +88,8 @@ module RuboCop
           end
         end
 
-        private
-
         def within_rspec_block?(node)
           node.each_ancestor.any? { |ancestor| rspec_block?(ancestor) }
-        end
-
-        def find_login_as_user(node)
-          # Find the topmost describe/context block
-          rspec_root = node.each_ancestor.find { |ancestor| rspec_block?(ancestor) }
-          return unless rspec_root
         end
       end
     end

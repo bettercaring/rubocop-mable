@@ -8,12 +8,17 @@ Mable/HardcodedDatabaseFactoryBotId:
   Description: "Avoid hardcoding factory bot database IDs, instead, dynamically test for the ID"
   VersionAdded: "0.1.1"
 
-Mable/NoPostInGraphQL:
-  Description: "Use graphQL helper method instead of use rails/rack request stack"
-  Enabled: true
-  VersionAdded: "0.1.4"
-
 Mable/NoSafetyAssured:
   Description: "An extra check to ensure that the safety_assured is required"
   Enabled: true
   VersionAdded: "0.1.3"
+
+Mable/NoPostInGraphQL:
+  Description: "Use graphQL helper method instead of use rails/rack request stack"
+  Enabled: true
+  VersionAdded: "0.1.4"
+  ReplacePostWith: "make_graphql_request"
+  SafeAutoCorrect: false
+  AllowedGraphQLPaths:
+    - "/graphql"
+    - "graphql_path"

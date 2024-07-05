@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Mable::NoPostInGraphQL, :config do
-  subject(:cop) { described_class.new(config) }
-
-  let(:config) { RuboCop::Config.new }
+  let(:config) { RuboCop::ConfigLoader.default_configuration }
   let(:spacer_start) { 0 }
   let(:spacer_end) { 0 }
 
   let(:offense_msg) do
-    'Use `make_graphql_request` directly instead of `post` for GraphQL requests, incorporating user context.'
+    "Use 'ReplacePostWith' default: `make_graphql_request` directly instead of `post` for GraphQL requests, incorporating user context."
   end
 
   context 'when using post in GraphQL specs' do
@@ -47,7 +45,7 @@ RSpec.describe RuboCop::Cop::Mable::NoPostInGraphQL, :config do
     end
   end
 
-  context 'when using helper method (make_graphql_request' do
+  context 'when using helper method (make_graphql_request)' do
     context 'within RSpec blocks' do
       context 'with query and variables' do
         let(:code) do
