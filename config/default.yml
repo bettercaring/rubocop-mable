@@ -22,3 +22,9 @@ Mable/NoPostInGraphQL:
   AllowedGraphQLPaths:
     - "/graphql"
     - "graphql_path"
+
+Mable/NoWardenInGraphQL:
+  Description: "No Warden in graphQL user helper method instead"
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: "0.1.5"

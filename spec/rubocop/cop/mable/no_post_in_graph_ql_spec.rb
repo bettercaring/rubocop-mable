@@ -2,8 +2,6 @@
 
 RSpec.describe RuboCop::Cop::Mable::NoPostInGraphQL, :config do
   let(:config) { RuboCop::ConfigLoader.default_configuration }
-  let(:spacer_start) { 0 }
-  let(:spacer_end) { 0 }
 
   let(:offense_msg) do
     "Use 'ReplacePostWith' default: `make_graphql_request` directly instead of `post` for GraphQL requests, incorporating user context."
@@ -11,17 +9,15 @@ RSpec.describe RuboCop::Cop::Mable::NoPostInGraphQL, :config do
 
   context 'when using post in GraphQL specs' do
     context 'with query and path as string' do
-      let(:code) { "RSpec.describe 'GraphQL' do post '/graphql', params: { query: graphql_query } end" }
-      let(:spacer_start) { "RSpec.describe 'GraphQL' do ".length }
-      let(:spacer_end) { ' end'.length }
+      let(:code) { "RSpec.describe 'GraphQL' do #{offense_method} end" }
+      let(:offense_method) { "post '/graphql', params: { query: graphql_query }" }
 
       it_behaves_like 'code that registers an offense'
     end
 
     context 'with query and path as helper' do
-      let(:code) { "RSpec.describe 'GraphQL' do post graphql_path, params: { query: graphql_query } end" }
-      let(:spacer_start) { "RSpec.describe 'GraphQL' do ".length }
-      let(:spacer_end) { ' end'.length }
+      let(:code) { "RSpec.describe 'GraphQL' do #{offense_method} end" }
+      let(:offense_method) { "post '/graphql', params: { query: graphql_query }" }
 
       it_behaves_like 'code that registers an offense'
     end

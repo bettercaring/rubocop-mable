@@ -2,8 +2,6 @@
 
 RSpec.describe RuboCop::Cop::Mable::GraphQLHelperSpecs, :config do
   let(:config) { RuboCop::ConfigLoader.default_configuration }
-  let(:spacer_start) { 0 }
-  let(:spacer_end) { 0 }
 
   let(:offense_msg) do
     'Avoid hardcoding GraphQL URL paths, instead, use the helper method.'

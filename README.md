@@ -6,6 +6,12 @@ Mable's custom Rubocop cops
 
 ```
 
+Mable/NoWardenInGraphQL:
+  Description: "No Warden in graphQL user helper method instead"
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: "0.1.5"
+
 Mable/NoPostInGraphQL:
 Description: "Use graphQL helper method instead of use rails/rack request stack"
 Enabled: true
