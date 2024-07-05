@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-mable (0.1.4)
+    rubocop-mable (0.1.5)
       rubocop
 
 GEM
