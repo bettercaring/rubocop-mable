@@ -4,21 +4,32 @@ Mable's custom Rubocop cops
 
 ## Cops
 
-```
+`
+Mable/NoPostInGraphQL:
+Description: 'Replace post in graphql specs with method'
+Enabled: true
+VersionAdded: '0.1.4'
+ReplacePostWith: 'make_graphql_request'
+AllowedGraphQLPaths:
+
+- "/graphql"
+- "graphql_path"
+
 Mable/NoSafetyAssured:
-  Description: 'An extra check to ensure that the safety_assured is required'
-  Enabled: true
-  VersionAdded: '0.1.3'
+Description: 'An extra check to ensure that the safety_assured is required'
+Enabled: true
+VersionAdded: '0.1.3'
 
 Mable/GraphQLHelperSpecs:
-  Description: 'Avoid hardcoding GraphQl path use helper instead.'
-  Enabled: true
-  VersionAdded: '0.1.2'
+Description: 'Avoid hardcoding GraphQl path use helper instead.'
+Enabled: true
+VersionAdded: '0.1.2'
 
 Mable/HardcodedDatabaseFactoryBotId:
-  Enabled: true
-  Description: 'Avoid hardcoding factory bot database IDs, instead, dynamically test for the ID'
-  VersionAdded: '0.1.1'
+Enabled: true
+Description: 'Avoid hardcoding factory bot database IDs, instead, dynamically test for the ID'
+VersionAdded: '0.1.1'
+
 ```
 
 ## Installation
@@ -48,3 +59,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Rubocop::Mable project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/rubocop-mable/blob/master/CODE_OF_CONDUCT.md).
+```

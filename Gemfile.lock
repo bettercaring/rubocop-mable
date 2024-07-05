@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-mable (0.1.3)
+    rubocop-mable (0.1.4)
       rubocop
 
 GEM
@@ -56,6 +56,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  ruby
 
 DEPENDENCIES
   pry
