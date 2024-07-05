@@ -7,7 +7,7 @@ Mable's custom Rubocop cops
 ```
 
 Mable/NoWardenInGraphQL:
-  Description: "No Warden in graphQL user helper method instead"
+  Description: "No Warden in graphQL use helper method instead see - Mable/NoPostInGraphQL"
   Enabled: true
   SafeAutoCorrect: false
   VersionAdded: "0.1.5"
