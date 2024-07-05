@@ -10,8 +10,16 @@ RSpec.describe RuboCop::Cop::Mable::NoPostInGraphQL, :config do
   end
 
   context 'when using post in GraphQL specs' do
-    context 'without query' do
+    context 'with query and path as string' do
       let(:code) { "RSpec.describe 'GraphQL' do post '/graphql', params: { query: graphql_query } end" }
+      let(:spacer_start) { "RSpec.describe 'GraphQL' do ".length }
+      let(:spacer_end) { ' end'.length }
+
+      it_behaves_like 'code that registers an offense'
+    end
+
+    context 'with query and path as helper' do
+      let(:code) { "RSpec.describe 'GraphQL' do post graphql_path, params: { query: graphql_query } end" }
       let(:spacer_start) { "RSpec.describe 'GraphQL' do ".length }
       let(:spacer_end) { ' end'.length }
 
