@@ -39,6 +39,10 @@ VersionAdded: '0.1.1'
 
 ```
 
+## TODO
+
+- No interpolating SQL use santitize instead
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
