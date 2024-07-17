@@ -35,6 +35,10 @@ module RuboCop
                   (pair (sym :variables) _)? # Optional :variables pair
                 )
               )
+              (pair # Optional as: :json
+                (sym :as)
+                (sym :json)
+              )?
             )
           )
         PATTERN
