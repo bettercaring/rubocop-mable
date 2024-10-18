@@ -28,3 +28,9 @@ Mable/NoWardenInGraphQL:
   Enabled: true
   SafeAutoCorrect: false
   VersionAdded: "0.1.5"
+
+Mable/UsingDeprecatedFFClient:
+  Description: "Using deprecated FeatureFlags::Client use FeatureFlags::Repo instead"
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: "0.1.7"
