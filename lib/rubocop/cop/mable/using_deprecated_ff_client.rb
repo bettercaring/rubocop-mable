@@ -20,14 +20,17 @@ module RuboCop
         MSG = 'FeatureFlags::Client is deprecated, please use FeatureFlags::Repo'
 
         def_node_matcher :deprecated_ff_client?, <<~PATTERN
-          (send (const (const nil? :FeatureFlags) :Client)...)
+          `(const (const nil? :FeatureFlags) :Client)
         PATTERN
 
         def on_send(node)
           expression = deprecated_ff_client?(node)
           return unless expression
 
-          add_offense(node)
+          add_offense(node) do |corrector|
+            replacement = node.source.sub('FeatureFlags::Client', 'FeatureFlags::Repo')
+            corrector.replace(node, replacement)
+          end
         end
       end
     end
