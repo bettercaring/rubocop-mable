@@ -37,6 +37,11 @@ Enabled: true
 Description: 'Avoid hardcoding factory bot database IDs, instead, dynamically test for the ID'
 VersionAdded: '0.1.1'
 
+Mable/UsingDeprecatedFFClient:
+  Description: "Using deprecated FeatureFlags::Client use FeatureFlags::Repo instead"
+  Enabled: true
+  SafeAutoCorrect: true
+  VersionAdded: "0.1.8"
 ```
 
 ## TODO

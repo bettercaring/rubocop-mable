@@ -13,14 +13,14 @@ RSpec.describe RuboCop::Cop::Mable::NoPostInGraphQL, :config do
       let(:code) { "RSpec.describe 'GraphQL' do #{offense_method} end" }
       let(:offense_method) { "post '/graphql', params: { query: graphql_query }" }
 
-      it_behaves_like 'code that registers an offense'
+      it_behaves_like 'code that registers an autocorrectable offense'
     end
 
     context 'with query and path as helper' do
       let(:code) { "RSpec.describe 'GraphQL' do #{offense_method} end" }
       let(:offense_method) { 'post graphql_path, params: { query: graphql_query }' }
 
-      it_behaves_like 'code that registers an offense'
+      it_behaves_like 'code that registers an autocorrectable offense'
     end
 
     context 'when post includes variables' do
@@ -28,14 +28,14 @@ RSpec.describe RuboCop::Cop::Mable::NoPostInGraphQL, :config do
       let(:offense_method) { "post '/graphql', params: { query: graphql_query, variables: { some: :variables } }" }
       let(:correction) { 'make_graphql_request(query: graphql_query, user: user, variables: { some: :variables })' }
 
-      it_behaves_like 'code that registers an offense'
+      it_behaves_like 'code that registers an autocorrectable offense'
     end
 
     context 'when post includes `as: :json`' do
       let(:code) { "RSpec.describe 'GraphQL' do #{offense_method} end" }
       let(:offense_method) { "post '/graphql', params: { query: graphql_query }, as: :json" }
 
-      it_behaves_like 'code that registers an offense'
+      it_behaves_like 'code that registers an autocorrectable offense'
     end
 
     context 'when not using params' do
