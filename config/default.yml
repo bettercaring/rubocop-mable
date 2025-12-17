@@ -34,3 +34,9 @@ Mable/UsingDeprecatedFFClient:
   Enabled: true
   SafeAutoCorrect: true
   VersionAdded: "0.1.8"
+
+Mable/RequiredTaskHeader:
+  Description: "Enforces that each task in a Rake file has an annotation block directly above it with required metadata (Type, Created, Ownership, Cleanup Card, Cleanup Date)"
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: "0.1.9"
