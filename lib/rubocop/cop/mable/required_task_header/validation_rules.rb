@@ -26,11 +26,11 @@ module RuboCop
               missing_msg: RequiredTaskHeader::Messages::MSG_MISSING_OWNERSHIP
             },
             cleanup_card: {
-              required: true,
+              required: false, # Conditionally required based on task type
               missing_msg: RequiredTaskHeader::Messages::MSG_MISSING_CLEANUP_CARD
             },
             cleanup_date: {
-              required: true,
+              required: false, # Conditionally required based on task type
               validator: lambda do |value|
                 value == 'Operational' || RequiredTaskHeader::AnnotationValidator.valid_date_format?(value)
               end,

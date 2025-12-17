@@ -382,6 +382,98 @@ RSpec.describe RuboCop::Cop::Mable::RequiredTaskHeader, :config do
     end
   end
 
+  context 'when task is operational with actual cleanup card and date' do
+    let(:code) do
+      <<~RUBY
+        # Task: my_task
+        #   Type: operational
+        #   Created: 2025-01-15
+        #   Ownership: @bettercaring/payments
+        #   Cleanup Card: ES-456
+        #   Cleanup Date: 2026-12-31
+        task :my_task do
+        end
+      RUBY
+    end
+
+    it 'does not register an offense' do
+      expect_no_offenses(code, 'test.rake')
+    end
+  end
+
+  context 'when task is operational without cleanup card and date' do
+    let(:code) do
+      <<~RUBY
+        # Task: my_task
+        #   Type: operational
+        #   Created: 2025-01-15
+        #   Ownership: @bettercaring/payments
+        task :my_task do
+        end
+      RUBY
+    end
+
+    it 'does not register an offense' do
+      expect_no_offenses(code, 'test.rake')
+    end
+  end
+
+  context 'when one-off task has Operational cleanup card' do
+    let(:code) do
+      <<~RUBY
+        # Task: my_task
+        #   Type: one-off
+        #   Created: 2025-01-15
+        #   Ownership: @bettercaring/payments
+        #   Cleanup Card: Operational
+        #   Cleanup Date: 2025-07-15
+        task :my_task do
+        end
+      RUBY
+    end
+
+    it 'registers an offense for invalid cleanup card' do
+      expect_offense(<<~RUBY, 'test.rake')
+        # Task: my_task
+        #   Type: one-off
+        #   Created: 2025-01-15
+        #   Ownership: @bettercaring/payments
+        #   Cleanup Card: Operational
+        #   Cleanup Date: 2025-07-15
+        task :my_task do
+        ^^^^^^^^^^^^^ Mable/RequiredTaskHeader: Task 'my_task' has invalid Cleanup Card. For 'one-off' tasks, it cannot be 'Operational'
+      RUBY
+    end
+  end
+
+  context 'when one-off task has Operational cleanup date' do
+    let(:code) do
+      <<~RUBY
+        # Task: my_task
+        #   Type: one-off
+        #   Created: 2025-01-15
+        #   Ownership: @bettercaring/payments
+        #   Cleanup Card: ES-123
+        #   Cleanup Date: Operational
+        task :my_task do
+        end
+      RUBY
+    end
+
+    it 'registers an offense for invalid cleanup date' do
+      expect_offense(<<~RUBY, 'test.rake')
+        # Task: my_task
+        #   Type: one-off
+        #   Created: 2025-01-15
+        #   Ownership: @bettercaring/payments
+        #   Cleanup Card: ES-123
+        #   Cleanup Date: Operational
+        task :my_task do
+        ^^^^^^^^^^^^^ Mable/RequiredTaskHeader: Task 'my_task' has invalid Cleanup Date. Must be YYYY-MM-DD or 'Operational'
+      RUBY
+    end
+  end
+
   context 'when file has namespaced tasks' do
     let(:code) do
       <<~RUBY
