@@ -29,6 +29,11 @@ Mable/NoWardenInGraphQL:
   SafeAutoCorrect: false
   VersionAdded: "0.1.5"
 
+Mable/OutboxEventNotRegistered:
+  Description: "Ensure all OutboxEventsService subclasses are registered in VALID_CLASSES"
+  Enabled: true
+  VersionAdded: "0.1.9"
+
 Mable/UsingDeprecatedFFClient:
   Description: "Using deprecated FeatureFlags::Client use FeatureFlags::Repo instead"
   Enabled: true
