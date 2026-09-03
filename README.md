@@ -42,6 +42,11 @@ Mable/UsingDeprecatedFFClient:
   Enabled: true
   SafeAutoCorrect: true
   VersionAdded: "0.1.8"
+
+Mable/NoArelTableStub:
+  Description: "Stubbing arel_table leaks into ActiveRecord's memoised predicate_builder, test the scope against the database instead"
+  Enabled: true
+  VersionAdded: "0.1.9"
 ```
 
 ## TODO
